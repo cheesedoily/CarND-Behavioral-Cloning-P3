@@ -19,7 +19,6 @@ for line in lines:
     steering_right = steering_center - correction
 
     path = '../data/'
-    print(path + line[0])
     img_center = cv2.imread(path + line[0])
     img_left = cv2.imread(path + line[1])
     img_right = cv2.imread(path + line[2])
