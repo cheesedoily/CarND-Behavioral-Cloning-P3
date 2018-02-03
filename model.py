@@ -8,7 +8,7 @@ with open('../data/driving_log.csv') as csvfile:
 	for line in readers:
 		lines.append(line)
 
-import = []
+images = []
 measurements = []
 for line in lines:
 	source_path = line[0]
