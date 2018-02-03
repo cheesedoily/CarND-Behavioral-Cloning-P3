@@ -56,7 +56,7 @@ from keras.models import Sequential
 from keras.layers import Flatten, Dense, Lambda
 from keras.layers import Convolution2D
 from keras.layers import MaxPooling2D
-from keras.layers.convolution import Cropping2D
+from keras.layers.convolutional import Cropping2D
 
 model = Sequential()
 model.add(Cropping2D(cropping=((70, 25), (0,0)), input_shape=(160, 320, 3)))
