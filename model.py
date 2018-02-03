@@ -20,16 +20,12 @@ for line in lines:
 
     path = '../data/'
     img_center = cv2.imread(path + line[0].strip())
-    img_left = cv2.imread(path + line[1].strip())
-    img_right = cv2.imread(path + line[2].strip())
-
-    # print("{}--{}".format(steering_center, path + line[0]))
-    # print("{}--{}".format(steering_left, path + line[1]))
-    # print("{}--{}".format(steering_right, path + line[2]))
+    # img_left = cv2.imread(path + line[1].strip())
+    # img_right = cv2.imread(path + line[2].strip())
 
     images.append(img_center) 
-    images.append(img_left)
-    images.append(img_right)
+    # images.append(img_left)
+    # images.append(img_right)
 
     measurements.append(steering_center)
     measurements.append(steering_left)
@@ -60,8 +56,10 @@ from keras.models import Sequential
 from keras.layers import Flatten, Dense, Lambda
 from keras.layers import Convolution2D
 from keras.layers import MaxPooling2D
+from keras.layers import Cropping2D
 
 model = Sequential()
+model.add(Cropping2D(cropping=((70,25), (0,0)), input_shape=(3,160,320)))
 model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(160,320,3)))
 model.add(Convolution2D(6, 5, 5, activation='relu'))
 model.add(MaxPooling2D())
