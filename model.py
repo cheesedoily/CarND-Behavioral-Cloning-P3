@@ -27,13 +27,13 @@ def generator(samples, batch_size=32):
                 steering_center = float(line[3])
 
                 correction = 0.2
-                steering_left = steering_center + correction
-                steering_right = steering_center - correction
+                # steering_left = steering_center + correction
+                # steering_right = steering_center - correction
 
                 path = '../data/'
                 img_center = cv2.imread(path + batch_sample[0].strip())
-                img_left = cv2.imread(path + batch_sample[1].strip())
-                img_right = cv2.imread(path + batch_sample[2].strip())
+                # img_left = cv2.imread(path + batch_sample[1].strip())
+                # img_right = cv2.imread(path + batch_sample[2].strip())
 
                 images.append(img_center)
                 angles.append(steering_center)
@@ -121,7 +121,7 @@ model.fit_generator(train_generator,
                     samples_per_epoch=len(train_samples),
                     validation_data=validation_generator, 
                     nb_val_samples=len(validation_samples), 
-                    nb_epoch=5, 
-                    verbose = 1)
+                    nb_epoch=3, 
+                    verbose=1)
 
 model.save('model.h5')
