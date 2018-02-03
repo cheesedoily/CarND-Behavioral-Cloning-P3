@@ -38,10 +38,10 @@ def generator(samples, batch_size=32):
                 images.append(img_center)
                 angles.append(steering_center)
 
-                images.append(img_left)
-                angles.append(steering_left)
-                images.append(img_right)
-                angles.append(steering_right)
+                # images.append(img_left)
+                # angles.append(steering_left)
+                # images.append(img_right)
+                # angles.append(steering_right)
 
             # trim image to only see section with road
             X_train = np.array(images)
