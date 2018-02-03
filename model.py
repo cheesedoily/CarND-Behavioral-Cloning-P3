@@ -12,7 +12,7 @@ with open('../data/driving_log.csv') as csvfile:
         lines.append(line)
 
 from sklearn.model_selection import train_test_split
-train_samples, validation_samples = train_test_split(samples, test_size=0.2)
+train_samples, validation_samples = train_test_split(lines, test_size=0.2)
 
 def generator(samples, batch_size=32):
     num_samples = len(samples)
