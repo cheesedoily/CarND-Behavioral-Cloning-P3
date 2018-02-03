@@ -24,7 +24,7 @@ def generator(samples, batch_size=32):
             images = []
             angles = []
             for batch_sample in batch_samples:
-                name = './IMG/'+batch_sample[0].split('/')[-1]
+                name = '../data/IMG/'+batch_sample[0].split('/')[-1]
                 center_image = cv2.imread(name)
                 center_angle = float(batch_sample[3])
                 images.append(center_image)
@@ -103,12 +103,12 @@ model.add(Dense(84))
 model.add(Dense(1))
 
 model.compile(loss='mse', optimizer='adam')
-model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=5)
-# model.fit_generator(train_generator, 
-#                     samples_per_epoch=len(train_samples),
-#                     validation_data=validation_generator, 
-#                     nb_val_samples=len(validation_samples), 
-#                     nb_epoch=5, 
-#                     verbose = 1)
+# model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=5)
+model.fit_generator(train_generator, 
+                    samples_per_epoch=len(train_samples),
+                    validation_data=validation_generator, 
+                    nb_val_samples=len(validation_samples), 
+                    nb_epoch=5, 
+                    verbose = 1)
 
 model.save('model.h5')
