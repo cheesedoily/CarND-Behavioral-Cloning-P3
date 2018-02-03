@@ -23,8 +23,8 @@ for line in lines:
     img_left = cv2.imread(path + line[1])
     img_right = cv2.imread(path + line[2])
 
-    images.extend(img_center, img_left, img_right)
-    measurements.extend(steering_center, steering_left, steering_right)
+    images += [img_center, img_left, img_right]
+    measurements += [steering_center, steering_left, steering_right]
 
     # source_path = line[0]
     # filename = source_path.split('/')[-1]
