@@ -23,12 +23,16 @@ for line in lines:
     img_left = cv2.imread(path + line[1])
     img_right = cv2.imread(path + line[2])
 
+    print("{}--{}".format(steering_center, path + line[0]))
+    print("{}--{}".format(steering_left, path + line[1]))
+    print("{}--{}".format(steering_right, path + line[2]))
+
     images.append(img_center) 
-    # images.append(img_left)
+    images.append(img_left)
     # images.append(img_right)
 
     measurements.append(steering_center)
-    # measurements.append(steering_left)
+    measurements.append(steering_left)
     # measurements.append(steering_right)
 
     # measurements += [steering_center, steering_left, steering_right]
