@@ -14,7 +14,7 @@ measurements = []
 for line in lines:
     steering_center = float(line[3])
     
-    correction = 0.2
+    correction = 0.1
     steering_left = steering_center + correction
     steering_right = steering_center - correction
 
@@ -24,12 +24,12 @@ for line in lines:
     img_right = cv2.imread(path + line[2].strip())
 
     images.append(img_center) 
-    images.append(img_left)
-    images.append(img_right)
+    # images.append(img_left)
+    # images.append(img_right)
 
     measurements.append(steering_center)
-    measurements.append(steering_left)
-    measurements.append(steering_right)
+    # measurements.append(steering_left)
+    # measurements.append(steering_right)
 
     # measurements += [steering_center, steering_left, steering_right]
 
