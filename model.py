@@ -37,7 +37,8 @@ def generator(samples, batch_size=32):
 
                 images.append(img_center)
                 angles.append(steering_center)
-
+                augmented_images.append(cv2.flip(img_center, 1))
+                augmented_measurements.append(steering_center * -1.0)
                 # images.append(img_left)
                 # angles.append(steering_left)
                 # images.append(img_right)
