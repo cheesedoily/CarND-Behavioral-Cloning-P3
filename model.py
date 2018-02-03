@@ -4,43 +4,43 @@ import numpy as np
 
 lines = []
 with open('../data/driving_log.csv') as csvfile:
-	reader = csv.reader(csvfile)
-	next(reader)
-	for line in reader:
-		lines.append(line)
+    reader = csv.reader(csvfile)
+    next(reader)
+    for line in reader:
+        lines.append(line)
 
 images = []
 measurements = []
 for line in lines:
     steering_center = float(line[3])
-	
-	correction = 0.2
-	steering_left = steering_center + correction
-	steering_right = steering_center - correction
+    
+    correction = 0.2
+    steering_left = steering_center + correction
+    steering_right = steering_center - correction
 
-	path = '../data'
-	img_center = cv2.imread(path + line[0])
-	img_left = cv2.imread(path + line[1])
-	img_right = cv2.imread(path + line[2])
+    path = '../data'
+    img_center = cv2.imread(path + line[0])
+    img_left = cv2.imread(path + line[1])
+    img_right = cv2.imread(path + line[2])
 
-	images.extend(img_center, img_left, img_right)
-	measurements.extend(steering_center, steering_left, steering_right)
+    images.extend(img_center, img_left, img_right)
+    measurements.extend(steering_center, steering_left, steering_right)
 
-	# source_path = line[0]
-	# filename = source_path.split('/')[-1]
-	# current_path = '../data/IMG/' + filename
-	# image = cv2.imread(current_path)
-	# images.append(image)
+    # source_path = line[0]
+    # filename = source_path.split('/')[-1]
+    # current_path = '../data/IMG/' + filename
+    # image = cv2.imread(current_path)
+    # images.append(image)
 
-	# measurement = float(line[3])
-	# measurements.append(measurement)
+    # measurement = float(line[3])
+    # measurements.append(measurement)
 
 augmented_images, augmented_measurements = [], []
 for image, measurement in zip(images, measurements):
-	augmented_images.append(image)
-	augmented_measurements.append(measurement)
-	augmented_images.append(cv2.flip(image, 1))
-	augmented_measurements.append(measurement * -1.0)
+    augmented_images.append(image)
+    augmented_measurements.append(measurement)
+    augmented_images.append(cv2.flip(image, 1))
+    augmented_measurements.append(measurement * -1.0)
 
 X_train = np.array(augmented_images)
 y_train = np.array(augmented_measurements)
