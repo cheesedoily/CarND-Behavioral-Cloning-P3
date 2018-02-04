@@ -32,17 +32,26 @@ def generator(samples, batch_size=32):
 
                 path = '../data/'
                 img_center = cv2.imread(path + batch_sample[0].strip())
-                # img_left = cv2.imread(path + batch_sample[1].strip())
-                # img_right = cv2.imread(path + batch_sample[2].strip())
+                img_left = cv2.imread(path + batch_sample[1].strip())
+                img_right = cv2.imread(path + batch_sample[2].strip())
 
                 images.append(img_center)
                 angles.append(steering_center)
                 images.append(cv2.flip(img_center, 1))
                 angles.append(steering_center * -1.0)
-                # images.append(img_left)
-                # angles.append(steering_left)
-                # images.append(img_right)
-                # angles.append(steering_right)
+
+                images.append(img_left)
+                angles.append(steering_left)
+                images.append(cv2.flip(img_left, 1))
+                angles.append(steering_left * -1.0)
+
+
+                images.append(img_right)
+                angles.append(steering_right)
+                images.append(cv2.flip(img_right, 1))
+                angles.append(steering_right * -1.0)
+
+
 
             # trim image to only see section with road
             X_train = np.array(images)
@@ -51,7 +60,6 @@ def generator(samples, batch_size=32):
 
 train_generator = generator(train_samples, batch_size=32)
 validation_generator = generator(validation_samples, batch_size=32)
-
 
 images = []
 measurements = []
