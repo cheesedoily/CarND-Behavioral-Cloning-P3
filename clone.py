@@ -127,6 +127,7 @@ def make_model():
     model.add(Dense(50))
     model.add(Dense(10))
     model.add(Dense(1))
+    return model
 
 model = make_model()
 
