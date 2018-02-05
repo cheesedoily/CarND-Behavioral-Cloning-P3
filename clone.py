@@ -14,7 +14,7 @@ with open('../data/driving_log.csv') as csvfile:
 from sklearn.model_selection import train_test_split
 train_samples, validation_samples = train_test_split(lines, test_size=0.2)
 
-def generator(samples, batch_size=32):
+def generator(samples, batch_size=32, augment=True):
     num_samples = len(samples)
     while 1: # Loop forever so the generator never terminates
         samples = sklearn.utils.shuffle(samples)
@@ -37,19 +37,21 @@ def generator(samples, batch_size=32):
 
                 images.append(img_center)
                 angles.append(steering_center)
-                images.append(cv2.flip(img_center, 1))
-                angles.append(steering_center * -1.0)
 
-                images.append(img_left)
-                angles.append(steering_left)
-                images.append(cv2.flip(img_left, 1))
-                angles.append(steering_left * -1.0)
+                if augment:
+                    images.append(cv2.flip(img_center, 1))
+                    angles.append(steering_center * -1.0)
+
+                    images.append(img_left)
+                    angles.append(steering_left)
+                    images.append(cv2.flip(img_left, 1))
+                    angles.append(steering_left * -1.0)
 
 
-                images.append(img_right)
-                angles.append(steering_right)
-                images.append(cv2.flip(img_right, 1))
-                angles.append(steering_right * -1.0)
+                    images.append(img_right)
+                    angles.append(steering_right)
+                    images.append(cv2.flip(img_right, 1))
+                    angles.append(steering_right * -1.0)
 
 
 
@@ -59,7 +61,7 @@ def generator(samples, batch_size=32):
             yield sklearn.utils.shuffle(X_train, y_train)
 
 train_generator = generator(train_samples, batch_size=32)
-validation_generator = generator(validation_samples, batch_size=32)
+validation_generator = generator(validation_samples, batch_size=32, augment=False)
 
 """
 images = []
@@ -134,7 +136,7 @@ model = make_model()
 model.compile(loss='mse', optimizer='adam')
 # model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=5)
 model.fit_generator(train_generator, 
-                    samples_per_epoch=len(train_samples),
+                    samples_per_epoch=len(train_samples) * 3,
                     validation_data=validation_generator, 
                     nb_val_samples=len(validation_samples), 
                     nb_epoch=3, 
