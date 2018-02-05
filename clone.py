@@ -27,8 +27,8 @@ def generator(samples, batch_size=32):
                 steering_center = float(line[3])
 
                 correction = 0.2
-                # steering_left = steering_center + correction
-                # steering_right = steering_center - correction
+                steering_left = steering_center + correction
+                steering_right = steering_center - correction
 
                 path = '../data/'
                 img_center = cv2.imread(path + batch_sample[0].strip())
