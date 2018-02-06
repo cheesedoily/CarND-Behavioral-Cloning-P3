@@ -44,14 +44,14 @@ def generator(samples, batch_size=32, augment=True):
 
                     images.append(img_left)
                     angles.append(steering_left)
-                    # images.append(cv2.flip(img_left, 1))
-                    # angles.append(steering_left * -1.0)
+                    images.append(cv2.flip(img_left, 1))
+                    angles.append(steering_left * -1.0)
 
 
                     images.append(img_right)
                     angles.append(steering_right)
-                    # images.append(cv2.flip(img_right, 1))
-                    # angles.append(steering_right * -1.0)
+                    images.append(cv2.flip(img_right, 1))
+                    angles.append(steering_right * -1.0)
 
 
 
