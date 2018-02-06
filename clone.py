@@ -44,14 +44,14 @@ def generator(samples, batch_size=32, augment=True):
 
                     images.append(img_left)
                     angles.append(steering_left)
-                    images.append(cv2.flip(img_left, 1))
-                    angles.append(steering_left * -1.0)
+                    # images.append(cv2.flip(img_left, 1))
+                    # angles.append(steering_left * -1.0)
 
 
                     images.append(img_right)
                     angles.append(steering_right)
-                    images.append(cv2.flip(img_right, 1))
-                    angles.append(steering_right * -1.0)
+                    # images.append(cv2.flip(img_right, 1))
+                    # angles.append(steering_right * -1.0)
 
 
 
@@ -136,7 +136,7 @@ model = make_model()
 model.compile(loss='mse', optimizer='adam')
 # model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=5)
 model.fit_generator(train_generator, 
-                    samples_per_epoch=len(train_samples) * 6,
+                    samples_per_epoch=len(train_samples) * 4,
                     validation_data=validation_generator, 
                     nb_val_samples=len(validation_samples), 
                     nb_epoch=3, 
