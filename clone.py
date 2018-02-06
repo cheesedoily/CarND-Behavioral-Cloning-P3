@@ -110,7 +110,7 @@ y_train = np.array(augmented_measurements)
 
 
 from keras.models import Sequential
-from keras.layers import Flatten, Dense, Lambda
+from keras.layers import Flatten, Dense, Dropout, Lambda
 from keras.layers import Convolution2D
 from keras.layers import MaxPooling2D
 from keras.layers.convolutional import Cropping2D
@@ -126,8 +126,11 @@ def make_model():
     model.add(Convolution2D(64, 3, 3, activation='relu'))
     model.add(Flatten())
     model.add(Dense(100))
+    model.add(Dropout(0.5))
     model.add(Dense(50))
+    model.add(Dropout(0.5))
     model.add(Dense(10))
+    model.add(Dropout(0.5))
     model.add(Dense(1))
     return model
 
