@@ -15,7 +15,9 @@ from sklearn.model_selection import train_test_split
 train_samples, validation_samples = train_test_split(lines, test_size=0.2)
 
 def load_image(filename, path='../data'):
-    image = cv2.imread(path + filename.strip())
+    full_file_path = path + filename.strip()
+    print full_file_path
+    image = cv2.imread(full_file_path)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     return image
 
