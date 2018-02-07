@@ -26,14 +26,19 @@ def generator(samples, batch_size=32, augment=True):
             for batch_sample in batch_samples:
                 steering_center = float(line[3])
 
-                correction = 0.3
+                correction = 0.2
                 steering_left = steering_center + correction
                 steering_right = steering_center - correction
 
                 path = '../data/'
                 img_center = cv2.imread(path + batch_sample[0].strip())
+                img_center = cv2.cvtColor(originalImage, cv2.COLOR_BGR2RGB)
+
                 img_left = cv2.imread(path + batch_sample[1].strip())
+                img_left = cv2.cvtColor(img_left, cv2.COLOR_BGR2RGB)
+
                 img_right = cv2.imread(path + batch_sample[2].strip())
+                img_right = cv2.cvtColor(img_right, cv2.COLOR_BGR2RGB)
 
                 images.append(img_center)
                 angles.append(steering_center)
@@ -61,7 +66,8 @@ def generator(samples, batch_size=32, augment=True):
             yield sklearn.utils.shuffle(X_train, y_train)
 
 train_generator = generator(train_samples, batch_size=32)
-validation_generator = generator(validation_samples, batch_size=32, augment=False)
+validation_generator = generator(validation_samples, batch_size=32, 
+                                augment=False) # do not need to augment validation set
 
 """
 images = []
@@ -139,7 +145,7 @@ model = make_model()
 model.compile(loss='mse', optimizer='adam')
 # model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=5)
 model.fit_generator(train_generator, 
-                    samples_per_epoch=len(train_samples) * 4,
+                    samples_per_epoch=len(train_samples) * 6,
                     validation_data=validation_generator, 
                     nb_val_samples=len(validation_samples), 
                     nb_epoch=5, 
