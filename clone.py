@@ -32,7 +32,7 @@ def generator(samples, batch_size=32, augment=True):
 
                 path = '../data/'
                 img_center = cv2.imread(path + batch_sample[0].strip())
-                img_center = cv2.cvtColor(originalImage, cv2.COLOR_BGR2RGB)
+                img_center = cv2.cvtColor(img_center, cv2.COLOR_BGR2RGB)
 
                 img_left = cv2.imread(path + batch_sample[1].strip())
                 img_left = cv2.cvtColor(img_left, cv2.COLOR_BGR2RGB)
