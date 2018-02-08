@@ -98,12 +98,10 @@ model = make_model()
 model.summary()
 
 model.compile(loss='mse', optimizer='adam')
-# model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=5)
 model.fit_generator(train_generator, 
                     samples_per_epoch=len(train_samples) * 4,
                     validation_data=validation_generator, 
                     nb_val_samples=len(validation_samples), 
-                    nb_epoch=5, 
+                    nb_epoch=4, 
                     verbose=1)
-
 model.save('model.h5')
