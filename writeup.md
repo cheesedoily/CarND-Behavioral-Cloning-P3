@@ -164,21 +164,21 @@ I used the provided training data and augmented, by adding a LR flip of the cent
 
 Center: Steering 0.0
 
-[image1]
+![alt text][image1]
 
 Flipped: Steering -0.0 (i know its still zero in this case)
 
-[image2]
+![alt text][image2]
 
 I also noticed that if the car started to veer that it hadn't been trained to recover properly, so I took the left and right camera images and added and subtracted a correction factor to bring the car back to the center. I ended up using a relatively high correction factor (0.8) to keep the car on the track especially on one segment (pictured below) where the dirt boundary confused the model initially. Unfortunately, this large correction causes the car to veer a little back and forth vs being very smooth.
 
 Left: Steering 0.0 + 0.8 = 0.8
 
-[image3]
+![alt text][image3]
 
 Right: Steering 0.0 - 0.8 = -0.8
 
-[image4]
+![alt text][image4]
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
