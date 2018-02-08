@@ -21,7 +21,7 @@ The goals / steps of this project are the following:
 [image1]: ./examples/center.jpg "Center"
 [image2]: ./examples/flipped.jpg "Flipped"
 [image3]: ./examples/left.jpg "Left"
-[image4]: ./examples/righta.jpg "Left"
+[image4]: ./examples/right.jpg "Left"
 
 
 ## Rubric Points
