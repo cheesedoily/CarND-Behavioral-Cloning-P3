@@ -18,10 +18,10 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/center.png "Center"
-[image2]: ./examples/flipped.png "Flipped"
-[image3]: ./examples/left.png "Left"
-[image4]: ./examples/righta.png "Left"
+[image1]: ./examples/center.jpg "Center"
+[image2]: ./examples/flipped.jpg "Flipped"
+[image3]: ./examples/left.jpg "Left"
+[image4]: ./examples/righta.jpg "Left"
 
 
 ## Rubric Points
@@ -64,6 +64,7 @@ The model was trained and validated on different data sets to ensure that the mo
 
 I used 4 Epochs after noticing the validation loss was plateauing / rising while the test loss decreased.
 
+```
 25712/25712 [==============================] - 47s - loss: 0.2105 - val_loss: 0.0933
 Epoch 2/5
 25712/25712 [==============================] - 45s - loss: 0.1714 - val_loss: 0.0962
@@ -73,6 +74,7 @@ Epoch 4/5
 25712/25712 [==============================] - 45s - loss: 0.1488 - val_loss: 0.0956
 Epoch 5/5
 25712/25712 [==============================] - 45s - loss: 0.1403 - val_loss: 0.0964
+```
 
 #### 3. Model parameter tuning
 
@@ -118,7 +120,7 @@ The nVidia model, with 50% dropout layers between the fully connected layers.
 11) 10 node fully connected layer 2/dropout and RELU activation
 
 
-
+```
 ____________________________________________________________________________________________________
 Layer (type)                     Output Shape          Param #     Connected to                     
 ====================================================================================================
@@ -156,7 +158,7 @@ Total params: 348,219
 Trainable params: 348,219
 Non-trainable params: 0
 ____________________________________________________________________________________________________
-
+```
 
 #### 3. Creation of the Training Set & Training Process
 
