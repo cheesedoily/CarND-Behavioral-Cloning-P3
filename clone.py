@@ -32,7 +32,7 @@ def generator(samples, batch_size=32, augment=True):
             for batch_sample in batch_samples:
                 steering_center = float(line[3])
 
-                correction = 0.5
+                correction = 0.8
                 steering_left = steering_center + correction
                 steering_right = steering_center - correction
 
