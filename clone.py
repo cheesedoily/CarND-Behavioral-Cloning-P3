@@ -95,7 +95,7 @@ def make_model():
 
 model = make_model()
 
-mode.summary()
+model.summary()
 
 model.compile(loss='mse', optimizer='adam')
 # model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=5)
